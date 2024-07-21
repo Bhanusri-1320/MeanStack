@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      body {
+        place-content: center;
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+      }
+      .hobbi {
+        list-style: none;
+        font-size: x-large;
+      }
+      .hobbi > li::before {
+        content: "✅";
+      }
+      .hobbi > li::after {
+        content: "❤️";
+      }
+      .head {
+        color: purple;
+        font-size: xx-large;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 class="head"><i class="fa-solid fa-heart"></i> Hobbies</h2>
+    <ul class="hobbi">
+      <li>Reading Novels</li>
+      <li>Cooking</li>
+      <li>Watching Dramas</li>
+      <li>Painting</li>
+    </ul>
+  </body>
+</html>

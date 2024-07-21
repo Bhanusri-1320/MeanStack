@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .body {
+        margin: 0%;
+        min-height: 100vh;
+        place-content: center;
+        display: flex;
+      }
+      .container {
+        width: 1000px; /*   background: orange; */
+        border-radius: 0.5rem;
+        overflow: hidden;
+        box-shadow: 3px 3px 10px 0px rgba(50, 50, 50, 0.1);
+        background-color: white;
+      }
+      .flag {
+        width: 100%;
+        height: 10rem;
+      }
+      .info {
+        padding: 10px;
+      }
+      .image {
+        width: 100%;
+        height: 10rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div class="container">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_Iceland.svg/640px-Flag_of_Iceland.svg.png"
+        alt=""
+        class="flag"
+      />
+      <div class="info">
+        <h1>Title</h1>
+        <p>Description</p>
+        <p>Author</p>
+      </div>
+    </div> -->
+    <script>
+      function displayNews(headline) {
+        document.body.innerHTML += `
+          <div class="container"
+          <img src="${headline.urlToImage}"
+             class="image"
+             >
+             <div class="info">
+                <h1> <span> Title: </span> ${headline.title} </h1>
+                 <h1> <span> Description: </span> ${headline.description} </h1>
+                  <h1> <span> Author: </span> ${headline.author} </h1>
+                   <h1> <span> Content: </span> ${headline.content} </h1>
+                   </div>
+                   </div>
+                   </br>
+                   </br>
+          `;
+      }
+
+      fetch(
+        "https://newsapi.org/v2/everything?q=apple&from=2024-07-20&to=2024-07-20&sortBy=popularity&apiKey=8753358c0b46427f84c146bbaed4b40c"
+      )
+        .then((res) => res.json())
+        // .then((values) => console.log(values));
+        //  .then((values) => displayNews(values));
+        .then((values) => values.articles.map((value) => displayNews(value)));
+
+      fetch(
+        "https://newsapi.org/v2/everything?q=apple&from=2024-07-20&to=2024-07-20&sortBy=popularity&apiKey=8753358c0b46427f84c146bbaed4b40c"
+      )
+        .then((res) => res.json())
+        .then((values) => console.log(values.articles));
+    </script>
+  </body>
+</html>
+
+<!-- values.articles.map((values) =>
+console.log(
+  `${values.author}: ${values.description} : ${values.title} ${values.content}`
+)
+); -->

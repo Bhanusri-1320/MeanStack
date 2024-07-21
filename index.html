@@ -4,8 +4,109 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      .countries {
+        list-style: none;
+      }
+    </style>
   </head>
   <body>
-    <script src="class.js"></script>
+    <ul class="countries"></ul>
+    <ul class="hobbies"></ul>
+    <img src="" alt="" />
+    <script>
+      const hobbiesData = [
+        "Reading",
+        "Painting",
+        "Photography",
+        "Hiking",
+        "Gardening",
+        "Cooking",
+        "Playing musical instruments",
+        "Dancing",
+        "Traveling",
+        "Knitting",
+      ];
+
+      document.querySelector(".hobbies").innerHTML = hobbiesData
+        .map((hobbi) => `<li> ${hobbi} </li>`)
+        .join("");
+
+      //   document.querySelector(".hobbies").innerHTML = fetch(
+      //     "https://restcountries.com/v3.1/all"
+      //   )
+      //     .then((response) => response.json())
+      //     .then((data) => data);
+
+      //   document.querySelector(".countries").innerHTML = fetch(
+      //     "https://restcountries.com/v3.1/all"
+      //   )
+      //     .then((response) => response.json())
+      //     .then((data) =>
+      //       data
+      //         .sort((a, b) => b.population - a.population)
+      //         .filter((data) => data.population > 10000000)
+      //         .slice(0, 11)
+      //         .map((data, index) => {
+      //           return `<li> ${index + 1}. ${
+      //             data.name.common
+      //           } - ${data.population.toLocaleString()} </li> `;
+      //         })
+      //     );
+      //  .then((output) => `<li> ${output} </li>`);
+      //.join("");
+      fetch("https://restcountries.com/v3.1/all")
+        .then((response) => response.json())
+        .then((data) => data);
+
+      function topCountries(countries) {
+        document.body.innerHTML += countries
+          .filter((country) => country.population > 10000000)
+          .map((data, index) => {
+            return `<li> ${index + 1}. ${data.name.common} - ${
+              data.population
+            }</li>`;
+          })
+          .join("");
+      }
+
+      function flagsDisplay(countries) {
+        document.body.innerHTML += countries.map(
+          (country) =>
+            `<img src="${country.flags.png}" width=100px height=100px>`
+        );
+      }
+
+      //   function addCountry(country) {
+      //     document.body.innerHTML += `
+      //     <div class="container">
+      //     <img
+      //         src="${country.flag}"
+      //         alt="${country.name} flag"
+      //         class="flag"
+      //     />
+      //     <div class="info">
+      //         <h2>${country.name}</h2>
+      //         <p><span>Population:</span> ${country.population}</p>
+      //         <p><span>Region:</span> ${country.region}</p>
+      //         <p><span>Capital:</span> ${country.capital}</p>
+      //     </div>
+      //     </div>
+      // `;
+      //   }
+      //   countriesInfo.map((country) => addCountry(country));
+
+      async function displayFlags() {
+        const countries = await "https://restcountries.com/v3.1/all";
+        const result = await countries
+          .json()
+          .then((data) => topCountries(data));
+      }
+      displayFlags();
+
+      fetch("https://restcountries.com/v3.1/all")
+        .then((response) => response.json())
+        .then((data) => flagsDisplay(data));
+    </script>
   </body>
 </html>

@@ -20,15 +20,10 @@ const userData = {
 
 function getUserAge(userData) {
   const age = userData?.user.profile?.age ?? "age is not provided";
-  const name = userData?.user?.profile?.name ?? "name is not provided";
-  console.log(age);
-  // return age;
-  if (age) {
-    console.log(age);
-  } else {
-    console.log(name);
-  }
+  // const name = userData?.user?.profile?.name ?? "name is not provided";
+  return age;
 }
+
 console.log(getUserAge(userData)); // Should print: Age not provided
 console.log(getUserAge({ user: { profile: { age: 25 } } })); // Should print: 25
 console.log(getUserAge({ user: {} })); // Should print: Age not provided

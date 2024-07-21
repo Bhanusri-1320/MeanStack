@@ -2,11 +2,11 @@
 console.log("hello world");
 console.log(a); // not defined is error --undefined means
 var a = 10;
-console.log(b);
+console.log(b); // undefined
 var b;
-console.log(b);
-let b = 10;
-console.log(b);
+console.log(b); // undefined
+let b = 10; 
+console.log(b); // 10
 
 function func() {
   var a = "Geeks";
@@ -206,6 +206,13 @@ const books = [
 ];
 
 // Rating 4.7 or more
+
+console.log(
+  books
+    .filter((book) => book.rating >= 4.7)
+    .map((book) => book.title)
+    .sort()
+);
 
 //arr.map((n) => n + 1);
 //console.log(books.map((b) => b.title).filter((rating) => rating >= 4.7));

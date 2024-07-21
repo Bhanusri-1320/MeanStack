@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0%;
+        min-height: 100vh;
+        display: grid;
+        place-content: center;
+      }
+      .main-container {
+        height: 200px;
+        width: 500px;
+        background: palevioletred;
+        border-radius: 10px;
+        text-align: center;
+      }
+      .image {
+        width: 200px;
+        height: 200px;
+        /* padding-right: 230px;
+        padding-top: 30px; */
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-container">
+      <img
+        class="image"
+        src="https://d38b044pevnwc9.cloudfront.net/cutout-nuxt/enhancer/3.jpg"
+        alt=""
+      />
+      <h1>Chris</h1>
+      <p>Mon Mat 20 2024</p>
+    </div>
+    <script>
+      fetch("https://669a42939ba098ed61fef789.mockapi.io/Users")
+        .then((values) => values.json())
+        .then((values) => console.log(values));
+    </script>
+  </body>
+</html>

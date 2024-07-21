@@ -18,6 +18,7 @@ pareint('string',radix)
 console.log(parseint("3.4")); // 3.4
 console.log(parseint("3.4", 10)); // 3.4
 console.log(parseint("101", 2)); // decimal value equivalent to decimal of 101
+parseInt("abc"); // NAN
 ```
 
 Matrix----movie
@@ -76,7 +77,7 @@ console.log(b);
 ```
 
 - initialization--- giving memeory spcae
-- assigning- giving vakue to the memory
+- assigning- giving value to the memory
 
 ```js
 //  JS Guy & Context guy(chithra)
@@ -214,6 +215,8 @@ sayhello()(); // calling function inside another function
 ```js
 const orages = [3, 4, 5, 6]; // address of the first value
 orages.push(10);
+orages[4] = 3; // will be pushed into the array
+orages.push("a"); // will also get pushed
 console.log(orages); // 3,4,5,6,10
 // no error unit the address is not changed
 orages = 10; // then error co reassigning the value means address willl change
@@ -296,7 +299,7 @@ let salary = 10_00_000; // _ does nothing insted of commas _ is used , only for 
 
 - only join will stop the chaining
 
-## Some, ever, includes
+## Some, ever, includes, find
 
 some((p)=> p==='a')
 
@@ -306,6 +309,90 @@ some((p)=> p==='a')
 - can do array to array also
 - can also act like map
 - create map, filter with reduce
+
+# Optional Chaining
+
+```js
+const person1 = {
+  name: {
+    first: "Alice",
+    last: "Johnson",
+  },
+  age: 28,
+  favoriteColors: ["blue", "green"],
+  //   place: {
+  //     city: "Chennai",
+  //   },
+};
+
+// defensive code
+if (person1.place && person1.place.city) {
+  console.log(person1.place.city);
+} else {
+  console.log("unknown");
+}
+
+// to slove above -- optional chaining
+
+console.log(person1?.place?.city); // not defensive code
+
+console.log(person1?.place?.city || "unknown"); //  checks all the falsy values , ut if we don't want to consider all those
+console.log(person1?.place?.city ?? "unknown"); // nullish coaliation consoders only null/undefined
+
+// Object short hand
+// if the key name and var names are tren only the key can be shortend
+// method short hand:
+const obj = {
+  foo: function () {
+    // …
+  },
+  bar: function () {
+    // …
+  },
+};
+// You are now able to shorten this to:
+
+const obj = {
+  foo() {
+    // …
+  },
+  bar() {
+    // …
+  },
+};
+
+
+// Ex1
+
+const person = {
+  name: {
+    first: "Alice",
+    last: "Johnson",
+  },
+  age: 28,
+  favoriteColors: ["blue", "green"],
+};
+
+function getPersonInfo(person1) {
+  const {
+    name: { first: firstName, last: lastName },
+    age: personAge,
+    favoriteColors: [primaryColor, secondaryColor],
+  } = person1;
+  return `${firstName} ${lastName} is ${personAge} years old. Her favorite colors are ${primaryColor} and ${secondaryColor}.`;
+}
+
+console.log(getPersonInfo(person1));
+// more
+function getPersonInfo({
+  name: { first: firstName, last: lastName },
+  age: personAge,
+  favoriteColors: [primaryColor, secondaryColor],
+}) {
+  return `${firstName} ${lastName} is ${personAge} years old. Her favorite colors are ${primaryColor} and ${secondaryColor}.`;
+}
+adding arroe function  (n) => n + 1
+```
 
 # 07-10-24
 
@@ -327,9 +414,9 @@ some((p)=> p==='a')
 ![alt text](image-21.png)
 ![alt text](image-22.png)
 
-# Serializing---converting into JSON
+# Serializing---converting JS Obj into JSON (using .stringify method)
 
-# DeSerialization-- converting back to the Object
+# DeSerialization-- converting back to the Object (using parse method)
 
 # Shallow copy- js is lazy so only makes cpy of outer array not the internal array
 
@@ -371,7 +458,7 @@ var y = [...x];
 # Rules for Variable Names:
 
 1. no keywords
-2. not starts with letter
+2. not starts with number
 3. no special chars expect (\_) underscore
 
 - camel case--abvDef
@@ -505,35 +592,38 @@ console.log(fullNameJohn()); // Output: "John Doe, New York, USA"
 - try to mimic the objects of real world into class
 - to make var private '#name'
 
-  if (type == "WithDraw") {
+```js
+if (type == "WithDraw") {
   this.transactions.push({
-  id: this.transactions.length + 1,
-  date: new Date(),
-  "type of Transaction": "WithDraw",
-  amount,
+    id: this.transactions.length + 1,
+    date: new Date(),
+    "type of Transaction": "WithDraw",
+    amount,
   });
-  } else {
+} else {
   this.transactions.push({
-  id: this.transactions.length + 1,
-  date: new Date(),
-  "type of Transaction": "Deposit",
-  amount: this.balance,
+    id: this.transactions.length + 1,
+    date: new Date(),
+    "type of Transaction": "Deposit",
+    amount: this.balance,
   });
-  }
+}
 
-  this.transactions.push({
+this.transactions.push({
   id: this.transactions.length + 1,
   date: new Date(),
   type,
   amount,
-  });
+});
+```
 
 # Inheritance:
 
 ![alt text](image-34.png)
 
 ```js
-/ Bank Class
+
+ Bank Class
 class Bank {
   //making it private var
   #balance;
@@ -593,3 +683,146 @@ class Bank {
 }
 
 ```
+
+# 17-07
+
+# TO get interactiveness- using form elements (window elements)
+
+# SVG VS PNG:
+
+- in svg img is stored as formula
+- even we zoom in it will not break
+- that's why it is lite
+  PNG,JPEG
+- stores in matrix
+- we zoom only one box thats why the img will break when we zoom
+
+# Combinators:
+
+![alt text](image-35.png)
+![alt text](image-36.png)
+![alt text](image-37.png)
+![alt text](image-38.png)
+
+> p+p -> adjacent sibling selector
+> Pesudo Selectors:
+
+- transition
+- transform
+- before after etc
+
+https://teams.microsoft.com/l/message/19:meeting_MDQ2ODdkNGItNWFkNy00MTUxLWFjZTMtMTIwZjYzYzlhOTQ2@thread.v2/1721196362807?context=%7B%22contextType%22%3A%22chat%22%7D
+
+> Clip path- for masking https://codepen.io/ragavkumarv/pen/OJeMJKj?editors=1100
+
+# Position Property:
+
+- to get over lapping
+  position-static/relative/absolute
+  > static -default
+  > relative- good theif, no one will notice when he is moving
+  > absolute- bad thef, every one will notice when moving and he goes and hides in nearest relative
+  > fixed- eve if we have more text to scrool that text will scroll but this will not get scroll it is fixed (like cookies,whatsapp )
+
+# 18-07:
+
+# JS:
+
+- is single thread and asyn(smart)
+- concurrent
+- setTimeout---is not JS code it is browser fn , it is living inside webapi
+
+## Callback: time component involved
+
+- An Action has to complete
+- it triggers the another action
+- the fn which is getting called is call back fn, in case of settimeout--the arrow fn is call back fn
+- only when time component involved then it asynchronous then only it is caleed call back
+
+# 4 parts in web:
+
+1. (Main thread)call Stack- only place can run JS
+2. WebApi: it knows to wait - which ever comes to web api are asyn, which have to wait they will come to webapi
+3. callback Queue- call back fn is stored unit it is pushed to the stack
+4. event Loop - will push from queue to stack only when stack is empty
+
+## Event Loops
+
+- all the synchronous code is called blocking code since it is blocking asnychronous code
+- to avoide the blocking of code quality should be maintained -
+- onclick-eventlisners---asynchrous (onclick) for click functioality
+
+# Dooms Taiangle:
+
+## fetch- we don't know the time
+
+- we don't know how much time it will take to fetch but execute the part which is written that's why we use this method to get data
+
+> To over come this dooms traingle promises are there
+
+# Promise:
+
+- solves call back hell
+
+> 3 states
+
+1. pending⌛
+2. fulfilled✅
+3. Rejected❌
+
+```js
+promise.resolve(3); // fullfill
+promise.reject(3); // rejected
+```
+
+![alt text](image-39.png)
+
+# REST API
+
+- interface b/w backend and frony end
+- request response , response will be a url
+  ![alt text](image-40.png)
+
+# Multiple Promises:
+
+2 methods to handle multiple promises
+
+- promise.all - it will wait for all the promises resolve
+- if any one is rejected, all get rejected goes to catch block
+- waits till one gets rejected
+  > ![alt text](image-41.png) // [2,3,4]
+- promise.any / promise.race
+- it will wait until any one completes
+- will error out if fastest one is rejected
+  > ![alt text](image-42.png) > ![alt text](image-43.png) > ![alt text](image-44.png)
+
+# Promise.allSettled()
+
+- will give all promises with their status which got fullfilled and rejected
+- this will always returns an array of object with (status and value) in array
+- it waits till all promises complete
+- always goes to thr .then
+- in all we will not get all the promises
+  ![alt text](image-45.png)
+
+# Finally - will always get exectues
+
+- will be used to clean up the code
+  ![alt text](image-46.png)
+
+# Async-aWait
+
+- for asny fn we have to put await in front of that fn
+- beginer friendly syntax
+- in promise we hadle the error through .catch
+- using try and catch
+
+# Note:
+
+- fetch will goes to the webApi
+- coz syack doesn't know how to exectue
+- and it is an asyn fn
+- so fetch will also goes the round trip
+- if we have .then (res=>res,json())--> .json() is also an asyn fn - so makes a round trip
+- in ,then if we donesn't have any asny code then it exectutes in the stack
+- if we have promises and timeout if both have same time completes at same time , then promises will be going to the vip queue in queue

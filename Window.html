@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        display: grid;
+        place-content: center;
+        min-height: 100vh;
+      }
+
+      button {
+        font-size: 60px;
+      }
+      .colors {
+        /* height: 500px;
+        width: 500px; */
+        /* background: pink; */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="colors"></div>
+    <button onclick="start()">▶️</button>
+    <button onclick="stop()">⏹️</button>
+    <button onclick="pause()">⏸️</button>
+
+    <script>
+      var starting;
+      let index = 0;
+      function start() {
+        console.log("Start is clicked......");
+        if (starting) {
+          return;
+        }
+        starting = setInterval(() => {
+          if (index == colors.length) {
+            index = 0;
+          }
+          //  console.log(index, colors[index]);
+          document.body.style.backgroundColor = colors[index];
+          index++;
+        }, 2000);
+      }
+      function stop() {
+        clearInterval(starting);
+        index = 0;
+      }
+      function pause() {
+        clearInterval(starting);
+      }
+
+      //   // Responsive  and this will stops the execution first 3
+      //   window.alert("this is cool"); // old one
+      //   const result = window.confirm("are you sure do you want to close this");
+      //   console.log(result); // if we click ok--returns true else false
+      //   const name = window.prompt("please tell me your name"); // to take input
+      //   console.log(name); // returns the text that is entered by the user
+      //   // window.setTimeout & window.setInterval
+      // Timer
+      window.setTimeout(() => {
+        console.log("hi, this is me"); // this we be called only one time after the specified the time
+      }, 5000);
+      // Runner
+      const rocketInterval = window.setInterval(() => {
+        console.log("❤️"); // this will call the arrow fn for every 5sec
+      }, 5000);
+      // window.clearInterval(rocketInterval); // is like stoper
+      const stoprocketInterval = window.setTimeout(() => {
+        window.clearInterval(rocketInterval); // this will call the arrow fn for every 5sec
+      }, 15000);
+
+      //   Task - Change the whole page color every 2s - cycle
+      const colors = ["crimson", "plum", "orange", "purple"];
+      //   const colorIntervel = window.setInterval(() => {
+      //     colors;
+      //   });
+      //   const flagContainer = document.createElement("div");
+      //   //   flagContainer.setAttribute("style", "background:red");
+      //   //   document.body.append(flagContainer);
+      //   //   flagContainer.setAttribute("height", "200px");
+      //   //   document.body.append(flagContainer);
+      //   const colorIntervel1 = window.setInterval(() => {
+
+      //     document.body.setAttribute("style", "color:${colors}");
+      //     // this will call the arrow fn for every 5sec
+      //   }, 2000);
+
+      //   let index = 0;
+      //   setInterval(() => {
+      //     if (index == colors.length) {
+      //       index = 0;
+      //     }
+      //     //  console.log(index, colors[index]);
+      //     document.body.style.backgroundColor = colors[index];
+      //     index++;
+      //   }, 2000);
+    </script>
+  </body>
+</html>

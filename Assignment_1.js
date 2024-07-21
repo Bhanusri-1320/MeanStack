@@ -75,12 +75,17 @@ const products = [
 // 199.99 // Assuming only one product meets the criteria
 
 console.log(
-  products
-    .filter((product) => product.reviews > 50 && product.rating >= 4.0)
+  products1
+    .filter(
+      (product) =>
+        product.category == "Electronics" &&
+        product.reviews > 50 &&
+        product.rating >= 4.0
+    )
     .map((product) => product.price)
-    .reduce((acc, curr) => acc + curr)
+    .reduce((acc, rating) => (acc + rating, 0) / rating.length)
+    .toFixed(2)
 );
-
 // Task 5: Merging User and Order Data
 // Description: Merge two arrays of objects based on a common key ( userId ) to create a new array of objects that includes each user's name and their corresponding
 // order details.

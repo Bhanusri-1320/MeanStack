@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-content: center;
+      }
+      .insta {
+        font-family: Georgia, "Times New Roman", Times, serif;
+        font-size: 50px; /* // to increase the size of the img  */
+        color: rgba(231, 37, 95, 0.919); /* to change the color*/
+      }
+      .hobbi {
+        font-size: 20px;
+        list-style: none;
+      }
+      /* peseudo selector after :  first selector  is called*/
+      .hobbi > li:first-child {
+        /*  instead of first 2nd etc we can use nth child*/
+        color: blueviolet;
+      }
+      .hobbi > li:nth-child(3),
+      .hobbi > li:nth-child(4) {
+        color: rgb(242, 35, 201);
+      }
+
+      .hobbi > li:nth-child(odd) {
+        color: blue;
+      }
+      .hobbi > li:nth-child(even) {
+        color: rgb(242, 35, 201);
+      }
+
+      .hobbi > li:nth-child(n + 3) {
+        color: rgb(37, 130, 229);
+      }
+      .hobbi > li:nth-child(2n + 3) {
+        color: rgb(49, 240, 55);
+      }
+      ul.hobbi > li:nth-child(2n + 3) {
+        /* same but being more specific , selecting only hobbies only in ul class */
+        color: rgb(49, 240, 55);
+      }
+    </style>
+  </head>
+  <body>
+    <p class="insta"><i class="fa-brands fa-square-instagram"></i> Instagram</p>
+    <!-- <h2>hobbies</h2> -->
+    <ul class="hobbi">
+      <li><i class="fa-solid fa-book"></i> Reading Novels</li>
+      <li><i class="fa-solid fa-utensils"></i> Cooking</li>
+      <li><i class="fa-solid fa-heart"></i> Watching Dramas</li>
+      <li><i class="fa-solid fa-palette"></i> Painting</li>
+      <h1><i class="fas fa-bars"></i> W.</h1>
+      <h1><i class="fa-solid fa-face-smile"></i></h1>
+    </ul>
+  </body>
+</html>
