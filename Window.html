@@ -33,23 +33,23 @@
       let index = 0;
       function start() {
         console.log("Start is clicked......");
-        if (starting) {
-          return;
-        }
+
         starting = setInterval(() => {
           if (index == colors.length) {
             index = 0;
           }
-          //  console.log(index, colors[index]);
           document.body.style.backgroundColor = colors[index];
           index++;
         }, 2000);
       }
       function stop() {
-        clearInterval(starting);
+        console.log("stop is clicked...");
         index = 0;
+
+        clearInterval(starting);
       }
       function pause() {
+        console.log("pause is clicked...");
         clearInterval(starting);
       }
 
@@ -61,17 +61,17 @@
       //   console.log(name); // returns the text that is entered by the user
       //   // window.setTimeout & window.setInterval
       // Timer
-      window.setTimeout(() => {
-        console.log("hi, this is me"); // this we be called only one time after the specified the time
-      }, 5000);
-      // Runner
-      const rocketInterval = window.setInterval(() => {
-        console.log("❤️"); // this will call the arrow fn for every 5sec
-      }, 5000);
-      // window.clearInterval(rocketInterval); // is like stoper
-      const stoprocketInterval = window.setTimeout(() => {
-        window.clearInterval(rocketInterval); // this will call the arrow fn for every 5sec
-      }, 15000);
+      // window.setTimeout(() => {
+      //   console.log("hi, this is me"); // this we be called only one time after the specified the time
+      // }, 5000);
+      // // Runner
+      // const rocketInterval = window.setInterval(() => {
+      //   console.log("❤️"); // this will call the arrow fn for every 5sec
+      // }, 5000);
+      // // window.clearInterval(rocketInterval); // is like stoper
+      // const stoprocketInterval = window.setTimeout(() => {
+      //   window.clearInterval(rocketInterval); // this will call the arrow fn for every 5sec
+      // }, 15000);
 
       //   Task - Change the whole page color every 2s - cycle
       const colors = ["crimson", "plum", "orange", "purple"];

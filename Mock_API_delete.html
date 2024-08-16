@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: Roboto;
+        background-image: linear-gradient(
+          to right top,
+          #d33472,
+          #f5534d,
+          #fa8518,
+          #e1ba00,
+          #a8eb12
+        );
+        min-height: 100vh;
+      }
+
+      .user-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      .user-container {
+        display: flex;
+        gap: 1rem;
+        background: white;
+        padding: 0.5rem;
+        border-radius: 0.4rem;
+        align-items: center;
+        box-shadow: 3px 3px 10px 0px rgba(50, 50, 50, 0.1);
+        transition: 0.2s;
+        min-width: 20rem;
+      }
+
+      .user-container:hover {
+        transform: scale(1.1);
+      }
+
+      .user-container > img {
+        height: 5rem;
+        width: 5rem;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      .user-name {
+        font-size: 1.2rem;
+        margin: 0;
+      }
+
+      .user-joined {
+        font-size: 0.8rem;
+        color: grey;
+      }
+
+      .user-delete {
+        font-size: 0.8rem;
+      }
+
+      .edit-user-form,
+      .add-user-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        margin: 1rem 0;
+        align-items: stretch;
+      }
+
+      /* .add-user-form > button,
+.add-user-form > input {
+  width: 50%;
+} */
+
+      .edit-user-form {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="add-user-form">
+      <label for="placeholder"> username</label>
+      <input type="text" placeholder="Ram" id="username" />
+      <label for="profile-pic">profile-pic</label>
+      <input type="text" placeholder="https://fill_your_url" id="profile-pic" />
+      <button onclick="addUser()">➕Add User</button>
+    </div>
+    <div class="user-list"></div>
+    <script>
+      const API = "https://669a42939ba098ed61fef789.mockapi.io";
+      // POst
+      // 1. method
+      // 2. body - Data & JSON
+      // 3. header--> JSON
+      function addUser() {
+        console.log("adding user....");
+        const username = document.querySelector("#username").value;
+        const profilePic = document.querySelector("#profile-pic").value;
+        console.log(username);
+        console.log(profilePic);
+        fetch(`${API}/Users`, {
+          method: "POST",
+          body: JSON.stringify({ name: username, avatar: profilePic }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then(() => loadUsers());
+      }
+      function addUserToView(user) {
+        document.querySelector(
+          ".user-list"
+        ).innerHTML += `<div class="user-container">
+                  <img
+                    src="${user.avatar}"
+                    alt="${user.name}"
+                  />
+                  <div class="user-details">
+                    <p class="user-name">${user.name}</p>
+                    <p class="user-joined">${user.createdAt}</p>
+                    <button onclick="deleteUser(${user.id})">❌ Delete</button>
+                    <button onclick="updateUser()">✏️Edit</button>
+                    </div>
+                </div>`;
+      }
+      const dataToUpdate = {
+        name: "Chikku",
+        avatar:
+          "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/239.jpg",
+      };
+      const jsonString = JSON.stringify(dataToUpdate);
+      function updateUser() {
+        console.log("editing the user....");
+        fetch(`${API}/Users`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: jsonString,
+        })
+          .then((res) => res.json())
+          .then(() => loadUsers());
+      }
+      //   Delete -> Refresh
+      function deleteUser(id) {
+        console.log("Deleting User....", id);
+        fetch(`${API}/Users/${id}`, { method: "DELETE" })
+          .then((res) => res.json())
+          .then(() => loadUsers());
+      }
+
+      function displayAllUsers(users) {
+        // empty the old list
+        document.querySelector(".user-list").innerHTML = "";
+        // add the new list
+        users.forEach((user) => addUserToView(user));
+      }
+
+      function loadUsers() {
+        fetch(`${API}/Users`)
+          .then((res) => res.json())
+          .then((users) => displayAllUsers(users));
+      }
+      loadUsers();
+      // Assignment--edit
+    </script>
+  </body>
+</html>

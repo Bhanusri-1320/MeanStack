@@ -826,3 +826,7 @@ promise.reject(3); // rejected
 - if we have .then (res=>res,json())--> .json() is also an asyn fn - so makes a round trip
 - in ,then if we donesn't have any asny code then it exectutes in the stack
 - if we have promises and timeout if both have same time completes at same time , then promises will be going to the vip queue in queue
+
+# GET ->
+
+# DELETE-> also will give all the data that got deleted , it will be easy for the front end to show the notification

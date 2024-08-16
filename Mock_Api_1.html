@@ -10,37 +10,133 @@
         min-height: 100vh;
         display: grid;
         place-content: center;
+        background-image: linear-gradient(
+          225deg,
+          hsl(39deg 62% 54%) 0%,
+          hsl(38deg 61% 53%) 7%,
+          hsl(37deg 60% 51%) 13%,
+          hsl(35deg 60% 50%) 20%,
+          hsl(34deg 62% 49%) 27%,
+          hsl(33deg 64% 47%) 33%,
+          hsl(32deg 67% 46%) 40%,
+          hsl(31deg 69% 45%) 47%,
+          hsl(30deg 71% 44%) 53%,
+          hsl(29deg 74% 42%) 60%,
+          hsl(27deg 76% 41%) 67%,
+          hsl(26deg 78% 40%) 73%,
+          hsl(25deg 80% 39%) 80%,
+          hsl(23deg 82% 38%) 87%,
+          hsl(22deg 83% 37%) 93%,
+          hsl(20deg 85% 36%) 100%
+        );
       }
       .main-container {
-        height: 200px;
+        height: 150px;
         width: 500px;
-        background: palevioletred;
+        background: white;
         border-radius: 10px;
-        text-align: center;
+        box-shadow: 0px 0px 5px 5px wheat;
+        padding: 20px;
+        /* text-align: center; */
+        display: flex;
+        flex-direction: row;
+        padding-bottom: 30px;
+        margin-bottom: 5%;
       }
       .image {
-        width: 200px;
-        height: 200px;
-        /* padding-right: 230px;
-        padding-top: 30px; */
+        width: 150px;
+        aspect-ratio: 1/1;
         border-radius: 50%;
+      }
+      .info {
+        padding-left: 30px;
+        padding-top: 10px;
       }
     </style>
   </head>
   <body>
-    <div class="main-container">
+    <!-- <div class="main-container">
       <img
         class="image"
         src="https://d38b044pevnwc9.cloudfront.net/cutout-nuxt/enhancer/3.jpg"
         alt=""
       />
-      <h1>Chris</h1>
-      <p>Mon Mat 20 2024</p>
-    </div>
+      <div class="info">
+        <h1>Chris</h1>
+        <p>Mon May 20 2024</p>
+      </div>
+    </div> -->
     <script>
-      fetch("https://669a42939ba098ed61fef789.mockapi.io/Users")
-        .then((values) => values.json())
-        .then((values) => console.log(values));
+      // function displayUsers(user) {
+      //   document.body.innerHTML += `
+      //   <div class="main-container">
+      //   <img src="${user.avatar}"
+      //     class="image">
+      //     <div class="info">
+      //       <h1> ${user.name} </h1>
+      //       <p> ${user.createdAt} </p>
+      //       <button onclick='deleteUser(${user.id})'> ❌ </button>
+      //         </div>
+      //         </div>
+      //   `;
+      // }
+      // function deleteUser(id) {
+      //   console.log("deleteing the user...");
+      //   console.log(`user id is: ${id}`);
+      //   fetch(`https://669a42939ba098ed61fef789.mockapi.io/Users/${id}`, {
+      //     method: "delete",
+      //   }).then((values) => values.json());
+      //   fetch("https://669a42939ba098ed61fef789.mockapi.io/Users")
+      //     .then((values) => values.json())
+      //     .then(() => loadUsers());
+      // }
+      // function loadUsers() {
+      //   fetch("https://669a42939ba098ed61fef789.mockapi.io/Users")
+      //     .then((values) => values.json())
+      //     .then((values) => values.map((values) => displayUsers(values)));
+      //   // .then((values) => console.log(values));
+      // }
+      // loadUsers();
+      const API="https://669a42939ba098ed61fef789.mockapi.io";
+      function addUserToView(user) {
+        document.querySelector(
+          ".user-list"
+        ).innerHTML += `<div class="user-container">
+                  <img
+                    src="${user.avatar}"
+                    alt="${user.username}"
+                  />
+                  <div class="user-details">
+                    <p class="user-name">${user.username}</p>
+                    <p class="user-joined">${user.createdAt}</p>
+                    <button onclick="deleteUser(${user.id})">Delete</button>
+                    </div>
+                </div>`;
+      }
+ 
+      //   Delete -> Refresh
+      function deleteUser(id) {
+        console.log("Deleting User....", id);
+        fetch(`${API}/users/${id}`, { method: "DELETE" })
+          .then((res) => res.json())
+          .then(() => loadUsers());
+      }
+ 
+      function displayAllUsers(users) {
+        users.forEach((user) => addUserToView(user));
+      }
+ 
+      function loadUsers() {
+        fetch(`${API}/users`)
+          .then((res) => res.json())
+          .then((users) => displayAllUsers(users));
+      }
+ 
+      loadUsers();
+    </script>
+  </body>
+</html>
+ 
     </script>
   </body>
 </html>

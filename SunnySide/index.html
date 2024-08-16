@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sunnyside</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        display: grid;
+        place-content: center;
+        min-height: 100vh;
+        background-color: black;
+      }
+      .whole {
+        max-width: 1440px;
+      }
+      @media (max-width: 1440px) {
+        .whole {
+          min-width: 400px;
+        }
+        .innerlist {
+          display: none;
+        }
+      }
+
+      .headerlist > .sunny {
+        padding-left: 20px;
+        font-family: "Fraunces", serif;
+        font-weight: 600;
+        font-size: 25px;
+        color: white;
+        height: 50px;
+        margin-right: 0px auto;
+      }
+      .header {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        font-family: "Fraunces", serif;
+        background-color: white;
+        height: 80vh;
+        /* position: relative; */
+        /* text-align: center; */
+      }
+      .header-image {
+        background-image: url("images/desktop/image-header.jpg");
+        background-repeat: no-repeat;
+        background-blend-mode: multiply;
+        background-size: cover;
+        /* position: static; */
+        width: 100%;
+        height: 95vh;
+        background-position: bottom;
+        position: relative;
+        /* opacity: 0; */
+      }
+      .weArecreatives {
+        position: relative;
+      }
+      .header h1 {
+        padding-top: 40px;
+        text-transform: uppercase;
+        color: white;
+        letter-spacing: 7px;
+        text-align: center;
+        align-content: center;
+        font-size: 35px;
+        margin: 0;
+      }
+      .header > .arrow h1 {
+        margin: 0;
+        position: absolute;
+        color: rgb(254, 252, 252);
+        font-size: 100px;
+        top: 178px;
+        left: 341px;
+      }
+      nav {
+        height: 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+
+        color: white;
+      }
+
+      nav ul li {
+        margin: 15px;
+        list-style-type: none;
+      }
+      nav ul li a {
+        text-decoration: none; /*to remove the underline that got by anchor tag*/
+        color: white;
+      }
+      nav ul li a:hover {
+        color: black;
+        border-radius: 10px;
+        background-color: white;
+        padding: 8px 16px;
+      }
+
+      .hamburger {
+        display: block;
+      }
+      nav ul {
+        display: none;
+      }
+      @media (min-width: 800px) {
+        .transform {
+          display: flex;
+          flex-direction: row-reverse;
+        }
+        .transform img {
+          width: 50%;
+        }
+        .standout {
+          display: flex;
+          flex-direction: row;
+        }
+
+        .standout img {
+          width: 50%;
+        }
+        .fruits {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+        }
+        .apples {
+          width: 50%;
+          /* background-image: url("images/desktop/image-graphic-design.jpg");
+          background-repeat: no-repeat;
+          background-size: cover; */
+        }
+
+        .orange {
+          width: 50%;
+        }
+        .allClients {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+        }
+        .hamburger {
+          display: none;
+        }
+        nav ul {
+          list-style-type: none;
+          margin: 15px;
+          padding: 5px;
+          display: flex;
+          align-items: center;
+        }
+      }
+
+      .headerlist ul {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1.5rem 0px;
+        color: white;
+      }
+
+      .transform {
+        background-color: white;
+      }
+      section {
+        background-color: white;
+      }
+      img {
+        width: 100%;
+      }
+      .innertransform {
+        place-content: center;
+      }
+      .innerstandout {
+        place-content: center;
+      }
+      .transform h2 {
+        text-align: center;
+        font-family: "Fraunces", serif;
+        font-weight: 800;
+        font-size: 40px;
+      }
+      .transform p {
+        text-align: center;
+        font-family: "Barlow", sans-serif;
+        font-weight: 700;
+        line-height: 26px;
+        opacity: 50%;
+        font-size: 20px;
+      }
+      .transform h3 {
+        text-align: center;
+        font-family: "Fraunces", serif;
+        text-transform: uppercase;
+        text-decoration-line: underline;
+        text-decoration-color: rgb(255, 255, 142);
+        text-decoration-thickness: 5px;
+        padding: 30px;
+        padding-bottom: 60px;
+        margin: 0;
+      }
+
+      .standout h2 {
+        text-align: center;
+        font-family: "Fraunces", serif;
+        font-weight: 800;
+        font-size: 40px;
+        padding-top: 10px;
+      }
+      .standout p {
+        text-align: center;
+        font-family: "Barlow", sans-serif;
+        font-weight: 700;
+        line-height: 26px;
+        opacity: 50%;
+        font-size: 20px;
+        padding: 20px;
+      }
+      .standout h3 {
+        text-align: center;
+        font-family: "Fraunces", serif;
+        text-transform: uppercase;
+        text-decoration-line: underline;
+        text-decoration-color: rgb(254 169 162);
+        text-decoration-thickness: 5px;
+        padding: 30px;
+        padding-bottom: 60px;
+        margin: 0;
+      }
+      .apples {
+        background-image: url("images/desktop/image-graphic-design.jpg");
+        background-repeat: no-repeat;
+        /* background-blend-mode: multiply; */
+        background-size: cover;
+        width: 100%;
+        height: 70vh;
+        /* background-position: bottom; */
+      }
+      .apples h2 {
+        text-align: center;
+        font-family: "Fraunces", serif;
+        font-weight: 800;
+        font-size: 40px;
+        color: rgb(42, 93, 42);
+        padding-top: 325px;
+        margin: 0;
+      }
+      .apples p {
+        text-align: center;
+        font-family: "Barlow", sans-serif;
+        font-weight: 700;
+        line-height: 26px;
+        opacity: 60%;
+        font-size: 17px;
+        /* padding: 18px;
+        margin: 0; */
+        color: hsl(167, 40%, 24%);
+      }
+      .orange {
+        background-image: url("images/desktop/image-photography.jpg");
+        background-repeat: no-repeat;
+        background-blend-mode: multiply;
+        background-size: cover;
+        width: 100%;
+        height: 70vhvh;
+
+        /* background-position: bottom; */
+      }
+      .orange h2 {
+        text-align: center;
+        font-family: "Fraunces", serif;
+        font-weight: 800;
+        font-size: 40px;
+        color: hsl(210, 13%, 34%);
+        padding-top: 325px;
+        margin: 0;
+      }
+      .orange p {
+        text-align: center;
+        font-family: "Barlow", sans-serif;
+        font-weight: 700;
+        line-height: 26px;
+        opacity: 60%;
+        font-size: 17px;
+        /* padding: 18px; */
+        color: hsl(198, 62%, 26%);
+        margin-bottom: 0;
+      }
+      .client-testimonials {
+        text-align: center;
+        padding: 20px;
+      }
+      .client-testimonials h1 {
+        margin: 0;
+        align-content: center;
+        opacity: 54%;
+        font-family: "Fraunces", serif;
+        text-transform: uppercase;
+        font-size: 15px;
+        padding: 40px;
+        letter-spacing: 3px;
+      }
+      .client-testimonials img {
+        border-radius: 50%;
+        width: 80px;
+        height: 80px;
+        align-content: center;
+      }
+      .client-testimonials h2 {
+        font-family: "Fraunces", serif;
+        font-size: 15px;
+        font-weight: 900;
+      }
+      .client-testimonials div {
+        margin: 0;
+        align-content: center;
+        opacity: 90%;
+        font-family: "Barlow", sans-serif;
+        font-size: 12px;
+        padding-bottom: 50px;
+      }
+      .client-testimonials p {
+        text-align: center;
+        /* font-family: "Barlow", sans-serif; */
+        font-weight: 600;
+        line-height: 26px;
+
+        font-size: 18px;
+        padding: 15px;
+      }
+      .footer {
+        display: grid;
+        justify-content: space-around;
+        margin-bottom: 20px;
+        margin: 0;
+        width: 100%;
+        text-align: center;
+        background-color: rgb(110 188 174);
+        height: 40vh;
+      }
+
+      /* @media (min-width: 800px) {
+        .images {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+      } */
+      /* @media (max-width: 700px) {
+        .footer-image {
+          display: grid;
+          grid-auto-rows: 1fr 1fr 1fr 1fr;
+        }
+      } */
+      .footer-image {
+        width: 100%;
+        /* height: 40vh; */
+        height: 40vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-blend-mode: multiply;
+      }
+      #milk-bottles {
+        background-image: url("images/mobile/image-gallery-milkbottles.jpg");
+      }
+      #orange-slice {
+        background-image: url("images/mobile/image-gallery-orange.jpg");
+      }
+      #cone {
+        background-image: url("images/mobile/image-gallery-cone.jpg");
+      }
+      #sugar-cubes {
+        background-image: url("images/mobile/image-gallery-sugar-cubes.jpg");
+      }
+
+      .sunnyside {
+        padding-top: 50px;
+        font-family: "Barlow", sans-serif;
+        font-weight: 700;
+        font-size: 39px;
+        color: rgb(42, 97, 87);
+      }
+
+      .services {
+        color: rgb(62, 132, 119);
+        font-family: "Barlow", sans-serif;
+        font-weight: 600;
+        display: flex;
+        justify-content: space-between;
+        gap: 60px;
+        font-size: 17px;
+      }
+      .icons img {
+        margin: 0;
+        width: 10%;
+        padding: 15px;
+      }
+      .images {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
+      .navbar {
+        display: flex;
+      }
+      .hamburger {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="whole">
+      <header class="header">
+        <!-- <i class="fa-solid fa-arrow-down-long"></i> -->
+        <div class="header-image">
+          <i class="fa-solid fa-arrow-down"></i>
+          <nav>
+            <p style="font-size: larger">SunnySide</p>
+            <div class="hamburger">
+              <i class="fa fa-bars"></i>
+            </div>
+            <ul class="navbar">
+              <li><a href="#">About</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Projects</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </nav>
+
+          <h1 class="heading1">We are creatives</h1>
+        </div>
+      </header>
+
+      <section>
+        <div class="transform">
+          <!-- <div class="egg"></div> -->
+          <img src="images\mobile\image-transform.jpg" alt="" class="egg" />
+          <div class="innertransform">
+            <h2>Transform your brand</h2>
+            <p>
+              We are a full service creative agency specializing in helping
+              brands grow fast. Engage your clients through compelling visuals
+              that do most of the marketing for you.
+            </p>
+            <h3>learn more</h3>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="standout">
+          <img src="images\mobile\image-stand-out.jpg" alt="" />
+          <div class="innerstandout">
+            <h2>Stand out to the right audience</h2>
+            <p>
+              Using a collaborative formula of designers, researchers,
+              photographers, videographers, and copywriters, we’ll build and
+              extend your brand in digital places.
+            </p>
+            <h3>Learn more</h3>
+          </div>
+        </div>
+      </section>
+      <section class="fruits">
+        <div class="apples">
+          <h2>Graphic design</h2>
+          <p>
+            Great design makes you memorable. We deliver artwork that
+            underscores your brand message and captures potential clients’
+            attention.
+          </p>
+        </div>
+
+        <div class="orange">
+          <h2>Photography</h2>
+          <p>
+            Increase your credibility by getting the most stunning, high-quality
+            photos that improve your business image.
+          </p>
+        </div>
+      </section>
+      <section>
+        <div class="client-testimonials">
+          <h1>Client testimonials</h1>
+          <div class="allClients">
+            <div class="client1">
+              <img src="images\image-emily.jpg" alt="emily" />
+              <p>
+                We put our trust in Sunnyside and they delivered, making sure
+                our needs were met and deadlines were always hit.
+              </p>
+              <h2>Emily R.</h2>
+              <div>Marketing Director</div>
+            </div>
+            <div class="client2">
+              <img src="images\image-thomas.jpg" alt="thomas" />
+              <p>
+                Sunnyside’s enthusiasm coupled with their keen interest in our
+                brand’s success made it a satisfying and enjoyable experience.
+              </p>
+              <h2>Thomas S.</h2>
+              <div>Chief Operating Officer</div>
+            </div>
+            <div class="client3">
+              <img src="images\image-jennie.jpg" alt="jennie" />
+              <p>
+                Incredible end result! Our sales increased over 400% when we
+                worked with Sunnyside. Highly recommended!
+              </p>
+              <h2>Jennie F.</h2>
+              <div>Business Owner</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- <div class="firsttwo">
+        <div class="footer-image" id="milk-bottles"></div>
+        <div class="footer-image" id="orange-slice"></div>
+      </div>
+      <div class="secondtwo">
+        <div class="footer-image" id="cone"></div>
+        <div class="footer-image" id="sugar-cubes"></div>
+      </div> -->
+
+      <div class="images">
+        <img
+          src="images\desktop\image-gallery-sugarcubes.jpg"
+          alt="marshmello"
+        />
+        <img src="images\desktop\image-gallery-orange.jpg" alt="mosambi" />
+        <img src="images\desktop\image-gallery-milkbottles.jpg" alt="milk" />
+        <img src="images\desktop\image-gallery-cone.jpg" alt="cone" />
+      </div>
+      <footer class="footer">
+        <div class="sunnyside">sunnyside</div>
+        <div class="services">
+          <p>About</p>
+          <p>Services</p>
+          <p>Projects</p>
+        </div>
+        <div class="icons">
+          <a href="#"><img src="images/icon-facebook.svg" alt="Facebook" /></a>
+          <a href="#"
+            ><img src="images/icon-instagram.svg" alt="Instagram"
+          /></a>
+          <a href="#"><img src="images/icon-twitter.svg" alt="Twitter" /></a>
+          <a href="#"
+            ><img src="images/icon-pinterest.svg" alt="Pinterest"
+          /></a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

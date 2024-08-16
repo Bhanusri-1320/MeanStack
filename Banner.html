@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      body {
+        margin: 0;
+        place-content: center;
+        min-height: 100vh;
+        width: 100vw;
+      }
+
+      .button1 {
+        top: 10%;
+        left: 3%;
+        cursor: pointer;
+        color: White;
+        width: 10%;
+        height: 80%;
+        font-size: 2rem;
+        position: absolute;
+        border: none;
+        background-color: transparent;
+      }
+      .button2 {
+        top: 10%;
+        right: 3%;
+        cursor: pointer;
+        color: white;
+        width: 10%;
+        height: 80%;
+        font-size: 2rem;
+        position: absolute;
+        border: none;
+        background-color: transparent;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+      }
+      img {
+        width: 90vw;
+        height: 75vh;
+      }
+    </style>
+  </head>
+  <body>
+    <center><h1>Landscape Scenario's</h1></center>
+    <div class="container">
+      <button class="button1" onClick="prevSlide()">
+        <i class="fa-solid fa-arrow-left"></i>
+      </button>
+      <img
+        id="banner"
+        src="https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?cs=srgb&dl=pexels-souvenirpixels-417074.jpg&fm=jpg"
+      />
+      <button class="button2" onClick="nextSlide()">
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+    <script>
+      const banners = [
+        "https://i.natgeofe.com/n/2a832501-483e-422f-985c-0e93757b7d84/6_3x2.jpg",
+        "https://media.istockphoto.com/id/485371557/photo/twilight-at-spirit-island.jpg?s=612x612&w=0&k=20&c=FSGliJ4EKFP70Yjpzso0HfRR4WwflC6GKfl4F3Hj7fk=",
+        "https://png.pngtree.com/thumb_back/fh260/background/20230617/pngtree-lakescape-landscape-nature-scenery-hd-image_2950137.jpg",
+        "https://wallpapers.com/images/hd/nature-landscape-pictures-ifqj8gxs5r49lqv7.jpg",
+        "https://wallpapers.com/images/hd/nature-landscape-pictures-69siuyypm1xg7ogz.jpg",
+        "https://www.landscapephotographyiq.com/wp-content/uploads/2017/07/soft-light-early.jpg",
+        "https://i.pinimg.com/originals/46/cd/e1/46cde1793ed0e7727ffbf6dc7a7ea189.jpg",
+      ];
+      const banner = document.getElementById("banner");
+      let position = 0;
+      setTimeout(function () {
+        if (position === 6) {
+          position = 0;
+        } else {
+          position = position + 1;
+        }
+        banner.src = banners[position];
+      }, 4000);
+
+      function prevSlide() {
+        if (position === 0) {
+          position = 6;
+        } else {
+          position = position - 1;
+        }
+        banner.src = banners[position];
+        setTimeout(function () {
+          if (position === 6) {
+            position = 0;
+          } else {
+            position = position + 1;
+          }
+          banner.src = banners[position];
+        }, 4000);
+      }
+
+      function nextSlide() {
+        if (position === 6) {
+          position = 0;
+        } else {
+          position = position + 1;
+        }
+        banner.src = banners[position];
+        setTimeout(function () {
+          if (position === 6) {
+            position = 0;
+          } else {
+            position = position + 1;
+          }
+          banner.src = banners[position];
+        }, 4000);
+      }
+    </script>
+  </body>
+</html>
