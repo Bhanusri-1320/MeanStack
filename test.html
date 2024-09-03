@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Hello</h1>
+    <h1>Hello world</h1>
+    <h1>Hello ❤️</h1>
+    <span id="highlight">Loooollllllllll</span>
+    <p class="fun">Wooowwww</p>
+    <div style="background-color: aqua"></div>
+    <ul class="Language">
+      <li>JS</li>
+      <li>SQL</li>
+    </ul>
+    <script>
+      //   headings = window.document.getElementsByTagName("h1");
+      //   console.log(headings);
+      //   headings[0].innerText = "Hello 🙂";
+      //   console.log(document.getElementById("highlight"));
+      //   console.log(document.getElementsByClassName("fun"));
+      console.log(document.querySelector("h1"));
+      console.log(document.querySelectorAll("h1"));
+      console.log(document.querySelector("#highlight"));
+      const headingfun = document.createElement("h2");
+      headingfun.innerText = "We are lazy";
+      document.body.append(headingfun);
+      document.querySelector("div").append(headingfun, "hello");
+      //   document.querySelector("div").appendChild("hello ❤️");
+      console.log(document.querySelector(".fun").innerHTML);
+      console.log(document.querySelector(".fun").innerText);
+      console.log(document.querySelector("div").innerHTML);
+      console.log(
+        (document.querySelector(".Language").innerText = `<li>HTML</li>
+                                                        <li> CSS</li>`) // for updation inner text will return the entire string with tags
+      );
+      console.log(
+        (document.querySelector(".Language").innerHTML = `<li>HTML</li>
+                                                        <li> CSS</li>`) // it will consider the tags and prints the list
+      );
+
+      // Create a new paragraph element
+      var newParagraph = document.createElement("p");
+      newParagraph.innerText = "This is a new paragraph.";
+
+      // Append the new paragraph to the body
+      document.body.appendChild(newParagraph);
+
+      const hobbiesData = [
+        "Reading",
+        "Painting",
+        "Photography",
+        "Hiking",
+        "Gardening",
+        "Cooking",
+        "Playing musical instruments",
+        "Dancing",
+        "Traveling",
+        "Knitting",
+      ];
+      const list = document.createElement("ul");
+      console.log(list);
+      list.innerHTML = hobbiesData.map((data) => `<li>${data}</li>`).join("");
+      document.body.append(list);
+    </script>
+  </body>
+</html>

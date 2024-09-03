@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Position Property Example</title>
+    <style>
+      .static {
+        position: static;
+        background-color: lightgrey;
+        padding: 10px;
+      }
+      .relative {
+        position: relative;
+        top: 10px;
+        left: 20px;
+        background-color: lightblue;
+        padding: 10px;
+      }
+      .absolute {
+        position: absolute;
+        /* top: 100px;
+        right: 20px; */
+        background-color: lightcoral;
+        padding: 10px;
+      }
+      .fixed {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        background-color: lightgreen;
+        padding: 10px;
+      }
+      .sticky {
+        position: sticky;
+        top: 0;
+        background-color: lightgoldenrodyellow;
+        padding: 10px;
+      }
+      .container {
+        height: 2000px;
+        padding: 20px;
+        border: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- <div class="static">Static Position</div> -->
+      <div class="relative">Relative Position</div>
+      <div class="absolute">Absolute Position</div>
+      <!-- 
+      <div class="fixed">Fixed Position</div>
+      <div class="sticky">Sticky Position</div> -->
+    </div>
+  </body>
+</html>

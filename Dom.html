@@ -19,7 +19,8 @@
     <input type="text" class="username" />
     <script>
       const headings = document.getElementsByTagName("h1");
-      /*  console.log(document.getElementsByTagName("h1")); */
+      console.log(typeof headings);
+      console.log(document.getElementsByTagName("h1"));
       console.log(headings[0].innerText);
       headings[0].innerText = "CSS is Good😊 !!";
       const highlight = document.getElementById("highlight"); // unique id for entire
@@ -62,6 +63,7 @@
       document.querySelector(".hobbies").innerHTML = hobbiesData
         .map((hobbi) => `<li> ${hobbi} </li>`)
         .join("");
+
       document
         .querySelector(".username")
         .setAttribute("placeholder", "enter your name");

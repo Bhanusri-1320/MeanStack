@@ -17,7 +17,7 @@ pareint('string',radix)
 ```js
 console.log(parseint("3.4")); // 3.4
 console.log(parseint("3.4", 10)); // 3.4
-console.log(parseint("101", 2)); // decimal value equivalent to decimal of 101
+console.log(parseint("101", 2)); // decimal value equivalent to decimal of 101-> 5 output
 parseInt("abc"); // NAN
 ```
 
@@ -830,3 +830,45 @@ promise.reject(3); // rejected
 # GET ->
 
 # DELETE-> also will give all the data that got deleted , it will be easy for the front end to show the notification
+
+# Inline vs Block
+
+Block Elements
+Characteristics:
+
+Display Behavior: Block elements take up the full width of their parent container by default, stretching from the left edge to the right edge.
+New Line: They start on a new line and push subsequent content down to the next line, effectively creating a “block” of content.
+Height and Width: You can set both width and height properties.
+Common Examples: <div>, <p>, <h1>, <ul>, <ol>, <li>, <section>, <header>, <footer>, <article>.
+Usage Example:
+
+html
+Copy code
+
+<div style="background-color: lightblue; width: 100%; height: 100px;">Block Element</div>
+<p style="background-color: lightgreen; width: 50%; height: 50px;">Another Block Element</p>
+Visual Representation:
+
+mathematica
+Copy code
+[ Block Element ]
+[ Block Element ]
+[ Block Element ]
+Inline Elements
+Characteristics:
+
+Display Behavior: Inline elements only take up as much width as necessary to fit their content, without breaking to a new line.
+New Line: They do not start on a new line and only occupy the space needed for their content.
+Height and Width: You cannot set width and height properties directly on inline elements; they only expand horizontally.
+Common Examples: <span>, <a>, <strong>, <em>, <img>, <br>, <input>, <label>.
+Usage Example:
+
+html
+Copy code
+<span style="background-color: lightcoral;">Inline Element</span>
+<a href="#" style="background-color: lightyellow;">Another Inline Element</a>
+Visual Representation:
+
+css
+Copy code
+[Inline Element] [Inline Element] [Inline Element]
