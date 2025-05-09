@@ -872,3 +872,136 @@ Visual Representation:
 css
 Copy code
 [Inline Element] [Inline Element] [Inline Element]
+
+
+
+
+
+- Loggers in nestjs are used to print messages about what's happeining in our porject like for debugging, monitoring and tracing.
+- Nestjs has a buit in Logger class, that comes with diff logging levels
+- Logging mainly hepls us to debug many things
+- Lets say there is any probelm in the any of the api and we don't know where it is but when we use logging/loggers we can easly fincout where is the error and why it is coming.
+- Nestjs has a buit in default logger but if our application needs advanced loggings we can use the tools like pinao or winstone.
+- We can customize our loggings like the visibility we can turn off completely, or only show errors or warns etc, can change the timestamp format.
+
+- log() – General information
+
+- error() – Errors
+
+- warn() – Warnings
+
+- debug() – Debugging info (only shows in development)
+
+- verbose() – Detailed messages (more than debug)
+
+```js
+import { Injectable, Logger } from '@nestjs/common';
+
+@Injectable()
+export class MyService {
+  private readonly logger = new Logger(MyService.name); // Logger context is 'MyService'
+
+  doSomething() {
+    this.logger.log('Doing something...');         // General log
+    this.logger.warn('This might be risky...');    // Warning
+    this.logger.error('Something went wrong!');    // Error
+  }
+}
+
+```
+
+- Output:
+  [Nest] 12345 - LOG [MyService] Doing something...
+  [Nest] 12345 - WARN [MyService] This might be risky...
+  [Nest] 12345 - ERROR [MyService] Something went wrong!
+
+- why we use this line?
+- private readonly logger = new Logger(MyService.name); // Logger context is 'MyService'
+- means creating an instance to the Logger class
+- we create this to give the context to the logger class
+- like while it is printing
+
+- we can disable the loggers completly
+- with adding a second parameter in NestFactory.create() method.
+
+```js
+const app = await NestFactory.create(AppModule, {
+  logger: false,
+});
+await app.listen(process.env.PORT ?? 3000);
+```
+
+- To enable specific logging levels, set the logger property to an array of strings specifying the log levels to display, as follows:
+
+```js
+const app = await NestFactory.create(AppModule, {
+  logger: ['error', 'warn'],
+});
+await app.listen(process.env.PORT ?? 3000);
+```
+
+- if you're using the default NestJS logger, you don’t need to mention it in the NestFactory.create() method.
+- like if we want to disable or use only some levels then we can mention in that method
+
+## JSON Logging:
+
+- JSON logging means outputting your log messages in structured JSON format instead of plain text.
+- Instead of logging like this:
+
+```js
+[2025-05-07 10:00:00] INFO: User created with ID 123
+```
+
+-You log like this:
+
+```js
+{
+  "timestamp": "2025-05-07T10:00:00.000Z",
+  "level": "info",
+  "message": "User created",
+  "userId": 123,
+  "context": "UserService"
+}
+```
+
+- An example for how it works:
+
+```js
+
+import { Logger, Injectable } from '@nestjs/common';
+
+@Injectable()
+class MyService {
+  private readonly logger = new Logger(MyService.name);
+
+  doSomething() {
+    this.logger.log('Doing something...');
+  }
+}
+
+// output:
+[Nest] 19096   - 12/08/2019, 7:12:59 AM   [NestFactory] Starting Nest application...
+
+```
+
+# Where we use logging:
+
+- # API Routes / Controllers — Log incoming requests, outgoing responses, and errors.
+
+  - In controller we can log the inputs that are coming in.
+
+- # Service Layer — Log business logic, data retrieval, and potential errors.
+
+  - In service layer we can log the business login step/critical info/ data base calls.
+
+- # Error Handling — Log errors in catch blocks or exception filters.
+
+  - When an exception is thrown we can log the error and we can also sepcify the details like at which serivce, timestamp and other more info so that we can know where the error is
+  - this part is the most important coz it will be helpful for debugging.
+  - For more global error handling (like unhandled exceptions), you can use Exception Filters in NestJS. This will catch and log unhandled exceptions globally.
+
+- Database Queries — Track DB queries for debugging slow or failing queries.
+
+- # Asynchronous Jobs — Log tasks like CRON jobs or background jobs for progress tracking.
+  - When you have background tasks or scheduled jobs, logging them helps to debug long-running processes or failures.
+
