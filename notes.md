@@ -1005,3 +1005,85 @@ class MyService {
 - # Asynchronous Jobs — Log tasks like CRON jobs or background jobs for progress tracking.
   - When you have background tasks or scheduled jobs, logging them helps to debug long-running processes or failures.
 
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+## Promises in JS:
+- Promises are a way to handle async operations - like reading file, fetching data or waiting for timers.
+- Promises solve callback hell
+- ### CallBack hell:
+     - call back hell means nesting async fns one inside another
+     - which makes hard for readability, difficult mainianace and error handing becomes very difficut
+     - 🔁 What is Callback Hell?
+     - Callback hell happens when you nest multiple asynchronous functions inside each other, like this:
+
+```js 
+getUser(userId, function(user) {
+    getPosts(user.id, function(posts) {
+        getComments(posts[0].id, function(comments) {
+            console.log(comments);
+        });
+    });
+});
+```
+- ### ✅ Promises Flatten the Structure
+     - With Promises, you can chain asynchronous operations instead of nesting:
+```jst
+getUser(userId)
+    .then(user => getPosts(user.id))
+    .then(posts => getComments(posts[0].id))
+    .then(comments => console.log(comments))
+    .catch(error => console.error(error));
+```
+- ### ✅ Even Cleaner: Async/Await
+    - Using async/await, the same logic becomes even more like synchronous code:
+```js
+async function showComments(userId) {
+    try {
+        const user = await getUser(userId);
+        const posts = await getPosts(user.id);
+        const comments = await getComments(posts[0].id);
+        console.log(comments);
+    } catch (error) {
+        console.error(error);
+    }
+}
+```
+
+- ###🔹 What is a Promise?
+     - A Promise is an object that represents the eventual completion or failure of an asynchronous operation.
+     - It can be in one of three states:
+     - 
+     - pending – initial state, not yet fulfilled or rejected.
+
+     - fulfilled – the operation completed successfully.
+
+     - rejected – the operation failed
+ 
+
+- Creating a promise:
+  ```js
+  new Promise((resolve,reject)=>{
+  })
+  ```
+  - we can resolve or reject this fn by the executer fn/ we can reject also.
+      ```js
+  new Promise((resolve,reject)=>{
+  let a=1+1;
+  if(a==2)
+  {
+  resolve("Done!");
+  }else
+  {
+  reject("Fail!");
+  }
+  })
+// how to use the promise
+  p.then((meassage)=>{
+  console.log("This is in the then"+message)
+  }).catch((message)=>{
+  console.log("This is in the catch"+message)
+  })
+  
+  ```
+  - 
